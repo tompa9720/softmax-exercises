@@ -7,7 +7,58 @@ Hands-on exercises covering:
 - 6.3 — top-p (nucleus) filtering
 - 6.4 — sampling from the distribution
 
-There are two ways to work through them:
+## Prerequisites
+
+- **Python 3.9 or later**
+- **git**
+
+Check whether you already have them:
+
+```bash
+python3 --version
+git --version
+```
+
+If either command is not found, install them first:
+
+- **macOS**: `brew install python git` (requires [Homebrew](https://brew.sh)), or download Python from [python.org](https://www.python.org/downloads/)
+- **Linux**: `sudo apt install python3 python3-venv git` (Debian/Ubuntu) or the equivalent for your distribution
+- **Windows**: download Python from [python.org](https://www.python.org/downloads/) (check "Add Python to PATH" during install) and Git from [git-scm.com](https://git-scm.com)
+
+## Setup
+
+1. Clone this repository and move into it:
+   ```bash
+   git clone https://github.com/tompa9720/softmax-exercises.git
+   cd softmax-exercises
+   ```
+
+2. Create a virtual environment:
+
+   - **macOS / Linux**:
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+   - **Windows (PowerShell)**:
+     ```powershell
+     python -m venv .venv
+     .venv\Scripts\Activate.ps1
+     ```
+   - **Windows (Command Prompt)**:
+     ```cmd
+     python -m venv .venv
+     .venv\Scripts\activate.bat
+     ```
+
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   (This installs `torch`, `transformers`, and `datasets`, so it downloads a few hundred
+   MB the first time — that's expected.)
+
+There are two ways to work through the exercises — pick whichever you prefer.
 
 ## Option A — plain Python scripts
 
@@ -38,18 +89,15 @@ bonus section that:
 - applies temperature plus **top-k and top-p together** to the real distribution
 - repeats the 6.4 sampling exercise on the real model's distribution
 
-## Setup
+To use it, install Jupyter and launch it:
 
-1. Create a virtual environment and install the dependencies:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
-   pip install -r requirements.txt
-   ```
-2. To run the plain scripts: `python presentation.py` (see above).
-3. To use the notebook: install Jupyter (`pip install jupyter`) and open
-   `exercises.ipynb`, or open it directly in VS Code / JupyterLab. Run all cells
-   (Kernel → Restart & Run All) after editing the values.
+```bash
+pip install jupyter
+jupyter notebook exercises.ipynb
+```
+
+(Or open `exercises.ipynb` directly in VS Code / JupyterLab if you already use one of
+those.) Run all cells (Kernel → Restart & Run All) after editing the values.
 
 The first run downloads the `distilgpt2` model weights and a small dataset split, so it
 takes a little longer — later runs are fast.
